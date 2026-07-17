@@ -1,0 +1,354 @@
+{
+    "modName": "VividRoutines",
+    "displayName": "Vivid Routines",
+    "minMcmVersion": 9,
+    "pluginRequirements": [ "VividRoutines.esp" ],
+    "cursorFillMode": "topToBottom",
+    "pages": [
+        {
+            "pageDisplayName": "General",
+            "cursorFillMode": "topToBottom",
+            "content": [
+                {
+                    "type": "header",
+                    "text": "Vivid Routines - Lightweight Living AI"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Enable Vivid Routines (master switch)",
+                    "help": "Turns every feature of this mod on or off. Takes effect immediately, no reload needed - all behaviors are engine conditions checking this value.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|800",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "empty"
+                },
+                {
+                    "type": "header",
+                    "text": "People"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Unrecruited follower routines",
+                    "help": "Followers you have NOT recruited (vanilla or modded, including 'available' ones that sit idle at a spawn point) get a real daily life: out and about by day (7-19), home at night (19-7). The instant you recruit one, this releases them so your follower framework (NFF) takes full control; it also stands down during scenes, dialogue, waiting and combat. This is the fix for followers standing around doing nothing.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|83C",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Idle NPC routines (the statue fix)",
+                    "help": "The universal safety net: any OTHER NPC with no AI of its own - castle and hub residents, oddly-placed statues - gets a daily life too, but only as a last resort (it never overrides NPCs that already have schedules, waiting followers, or quest AI).",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|801",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Wanderlust - free spirits may go anywhere",
+                    "help": "Free-spirit citizens AND follower-type NPCs travel to taverns in other holds on their personal weekdays (roughly a 1-in-6 chance per day per traveler). Guards, merchants, jarls, soldiers and quest-vital non-follower NPCs never wander.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|802",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "City outings & town inn visits",
+                    "help": "On their cohort's weekdays, followers and residents step out and stroll their city (staggered morning/afternoon shifts), and small-town folk spend midday at their LOCAL inn - all nine inn towns covered, from Riverwood to Winterhold. Anchored inside venues on markers, low energy so people actually sit and stay sat.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|82A",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Weather rules",
+                    "help": "Rain sends everyone but Argonians and working guards to shelter around home (storms make them RUN); snow sends everyone but Nords in; blizzards send even Nords. Field work and market stalls pause while it lasts - no more hoeing in a downpour. Children shelter too. Clears the moment the sky does.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|840",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Foes stay foes",
+                    "help": "Hostile-faction cowards (often a mod author oversight) get their confidence lifted ONLY while hostile to you, so enemies fight instead of fleeing. Cowardly civilians still flee dragons, and follower courage arcs are untouched.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|807",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Named NPC flavor",
+                    "help": "Balgruuf and Vignar visit the Bannered Mare after the civil war ends; Elisif and Ulfric hold their own weekly tavern evenings; Adrianne, Ulfberth and Belethor are Bannered Mare regulars; Carlotta takes Mila there for a Sundas family dinner; Danica tends the Gildergreen; Nazeem struts the Cloud District; Heimskr draws a small crowd. Also enables Yuria's nightly trip to feed the falmer (needs Yuria_2.esp).",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|808",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Children may visit the local inn",
+                    "help": "Regular inns are fine for kids (they eat and sleep there) so this is never blocked; only the three adult nightlife taverns are 0%. Adds a daytime habit of a child visiting their own city's regular inn: 70% for named inn-children (Mila and the street urchins Lucia/Sofie/Alesan/Blaise, plus modded urchins), 15% for other kids. It never overrides a child's own inn or home AI. Turn off to keep children fully on vanilla AI.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|835",
+                        "defaultValue": 1
+                    }
+                }
+            ]
+        },
+        {
+            "pageDisplayName": "Livelihoods",
+            "cursorFillMode": "topToBottom",
+            "content": [
+                {
+                    "type": "header",
+                    "text": "People work for a living"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Job routines",
+                    "help": "NPCs in job factions with no work AI of their own - farmers, miners, smiths, fishers, priests, inn staff, maids, lumberjacks - get a proper workday around their home. Bottom of the AI stack: anyone with a real vanilla or modded schedule is untouched.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|850",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Hunters hunt",
+                    "help": "Hunters range the wilds at dawn (the engine's own predator/prey factions supply real kills), then process the take back at camp around midday. They also carry hides and pelts you can trade for. Bounty collectors sent after you are excluded.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|851",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Hunter trade trips",
+                    "help": "In the afternoon, hunters head out toward roads and settlements with the day's take. Turn off if you prefer hunters to stay in the deep wilds.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|852",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Meal times",
+                    "help": "Three times a day (7:00, 12:00, 18:00) people pause what they're doing and eat where they are - home tables, tavern benches, camp fires. Pairs beautifully with Eating Animations. Working merchants, innkeepers, jarls and guards are excluded; children eat with everyone else.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|863",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Temple on Sundas",
+                    "help": "On Sundas morning, cohort-carrying city residents attend their hold's temple - Kynareth in Whiterun, the Divines in Solitude, Talos in Windhelm, Mara in Riften, Dibella in Markarth. Children come along; shopkeepers keep their stalls.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|864",
+                        "defaultValue": 1
+                    }
+                }
+            ]
+        },
+        {
+            "pageDisplayName": "Night Folk",
+            "cursorFillMode": "topToBottom",
+            "content": [
+                {
+                    "type": "header",
+                    "text": "Vampires"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Vampire day/night routines",
+                    "help": "Wild vampires sleep in their lair by day (in their own coffin/bed or a nearby unowned one, never outdoors in daylight) and wander far at night. Coldhaven citizens, thralls and unique vampires like Serana are untouched.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|803",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Vampire night hunt",
+                    "help": "About 60% of wild vampires become aggressive hunters at night when outdoors - they need to feed. Never applies indoors, by day, to followers or to unique vampires.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|804",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Coldhaven pilgrimage",
+                    "help": "About 30% of seasoned vampires (level 15+) travel to Coldhaven at night instead of wandering. Requires the 'VividRoutines - Coldhaven.esp' module and Coldhaven - A Vampire City.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|805",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "empty"
+                },
+                {
+                    "type": "header",
+                    "text": "Werebeasts & Daedra"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Werewolf night prowl",
+                    "help": "Werebeasts don't mind the sun, so unlike vampires they live normally by day; about 60% lean nocturnal and prowl a wide range around their home at night, the rest keep normal lives. The Companions Circle keeps its questline schedule.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|806",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Daedra & demon routines",
+                    "help": "Friendly daedric and demonic NPCs (including modded demon/succubus followers) lurk near their lair by day and roam wide at night. Hostile dungeon daedra are never touched.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|824",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "College of Winterhold life",
+                    "help": "College members study in the Hall of the Elements by day and socialise at the Frozen Hearth in the evening, so Winterhold stops feeling deserted. Works on vanilla anchors; if you run a College overhaul, there are simply more mages to bring to life.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|87F",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "empty"
+                },
+                {
+                    "type": "header",
+                    "text": "Wilderness"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Wolf pack hunts",
+                    "help": "Wolves roam their territory by day (6-20) instead of idling at their spawn, so they actually cross paths with deer and goats - the vanilla predator/prey system does the rest. This does NOT make wolves attack people any harder, and the roam stays out of settlements. Nights are left alone so herds recover. If wildlife ever feels thin, turn this off first.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|87B",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Necromancer rites",
+                    "help": "Necromancers practice where the dead rest: some trek by night to Hamvir's Rest - a wilderness burial ground far from any guarded city - while the rest hold rites around their own lairs. Atmospheric, low-frequency, never inside good-faction walls.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|853",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Foe night routines",
+                    "help": "Bandits, Forsworn and warlocks at exterior camps go scouting around their turf at night (wide radius) - looking for prey, or someone to drag back to camp. Dungeon dwellers are untouched, combat always takes priority, and named uniques are excluded, so nothing quest-related can break.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|841",
+                        "defaultValue": 1
+                    }
+                }
+            ]
+        },
+        {
+            "pageDisplayName": "Hostile World",
+            "cursorFillMode": "topToBottom",
+            "content": [
+                {
+                    "type": "header",
+                    "text": "Danger - opt-in, OFF by default"
+                },
+                {
+                    "type": "text",
+                    "text": "The two toggles below add real, lethal combat to the open world. Non-essential NPCs can and will die. They are OFF unless you turn them on."
+                },
+                {
+                    "type": "toggle",
+                    "text": "Bandit farm raids",
+                    "help": "WARNING: adds combat. When on, exterior-camp bandits raid a nearby farm in their own hold on two evenings a week, then fall back. Hold-routed (no cross-map treks); farmhands can die. Dungeon bandits and named uniques are never affected.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|875",
+                        "defaultValue": 0
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Civil war camp sorties",
+                    "help": "WARNING: adds combat, and only while the civil war is unfinished - it self-disables the moment the war ends. Imperial and Stormcloak camp soldiers push out on two afternoons a week and clash where they meet. If you use a faction-war mod like 'Stormcloaks Fight With Thalmor and Penitus Oculatus', leave this OFF to avoid overlapping roaming armies.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|876",
+                        "defaultValue": 0
+                    }
+                }
+            ]
+        },
+        {
+            "pageDisplayName": "Modded Venues",
+            "cursorFillMode": "topToBottom",
+            "content": [
+                {
+                    "type": "header",
+                    "text": "Dynamic visitors for modded places"
+                },
+                {
+                    "type": "toggle",
+                    "text": "Tavern nightlife (wenches)",
+                    "help": "Immersive Wenches NPCs go out in the evening to The Naked Dragon, The Nasty Pine and The Rift's Rest on rotating weekdays. Requires 'VividRoutines - Nightlife.esp' and those taverns.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|809",
+                        "defaultValue": 1
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Bruma exchange",
+                    "help": "A few Skyrim citizens travel to Bruma's Jerall View Inn on weekends, and a few Bruma citizens visit Ivarstead midweek. Rare on purpose. Requires 'VividRoutines - Bruma.esp' and Beyond Skyrim: Bruma.",
+                    "valueOptions": {
+                        "sourceType": "GlobalValue",
+                        "sourceForm": "VividRoutines.esp|80A",
+                        "defaultValue": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

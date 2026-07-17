@@ -1,0 +1,101 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+    <moduleName>Vivid Routines - Lightweight Living AI</moduleName>
+
+    <requiredInstallFiles>
+        <folder source="00 Core" destination="" priority="0"/>
+    </requiredInstallFiles>
+
+    <installSteps order="Explicit">
+        <installStep name="Optional Venue Modules">
+            <optionalFileGroups>
+                <group name="Modded places (auto-detected from your load order)" type="SelectAny">
+                    <plugins order="Explicit">
+
+                        <plugin name="Coldhaven Pilgrimage">
+                            <description>Seasoned vampires travel to the hidden city at night. Requires Coldhaven - A Vampire City (Coldhaven.esm). This option is pre-selected when Coldhaven is active in your load order and locked when it is missing, so you can never install a plugin with a missing master.</description>
+                            <files>
+                                <folder source="10 Coldhaven" destination="" priority="0"/>
+                            </files>
+                            <typeDescriptor>
+                                <dependencyType>
+                                    <defaultType name="Optional"/>
+                                    <patterns>
+                                        <pattern>
+                                            <dependencies operator="And">
+                                                <fileDependency file="Coldhaven.esm" state="Missing"/>
+                                            </dependencies>
+                                            <type name="NotUsable"/>
+                                        </pattern>
+                                        <pattern>
+                                            <dependencies operator="And">
+                                                <fileDependency file="Coldhaven.esm" state="Active"/>
+                                            </dependencies>
+                                            <type name="Recommended"/>
+                                        </pattern>
+                                    </patterns>
+                                </dependencyType>
+                            </typeDescriptor>
+                        </plugin>
+
+                        <plugin name="Tavern Nightlife">
+                            <description>Wenches go out in the evening to The Naked Dragon, The Nasty Pine and The Rift's Rest on rotating weekdays. Requires all three taverns (The Naked DragonSSE.esp, The Nasty Pine.esp, riftrest.esp); Immersive Wenches provides the visitors (soft dependency - safe without it, nothing will visit). Pre-selected when all three taverns are active, locked when any is missing.</description>
+                            <files>
+                                <folder source="20 Nightlife" destination="" priority="0"/>
+                            </files>
+                            <typeDescriptor>
+                                <dependencyType>
+                                    <defaultType name="Optional"/>
+                                    <patterns>
+                                        <pattern>
+                                            <dependencies operator="Or">
+                                                <fileDependency file="The Naked DragonSSE.esp" state="Missing"/>
+                                                <fileDependency file="The Nasty Pine.esp" state="Missing"/>
+                                                <fileDependency file="riftrest.esp" state="Missing"/>
+                                            </dependencies>
+                                            <type name="NotUsable"/>
+                                        </pattern>
+                                        <pattern>
+                                            <dependencies operator="And">
+                                                <fileDependency file="The Naked DragonSSE.esp" state="Active"/>
+                                                <fileDependency file="The Nasty Pine.esp" state="Active"/>
+                                                <fileDependency file="riftrest.esp" state="Active"/>
+                                            </dependencies>
+                                            <type name="Recommended"/>
+                                        </pattern>
+                                    </patterns>
+                                </dependencyType>
+                            </typeDescriptor>
+                        </plugin>
+
+                        <plugin name="Bruma Exchange">
+                            <description>Rare two-way travel between Skyrim and Bruma: a few Skyrim citizens visit the Jerall View Inn on weekends, a few Bruma citizens visit Ivarstead midweek. Requires Beyond Skyrim: Bruma (BSHeartland.esm). Pre-selected when Bruma is active, locked when it is missing.</description>
+                            <files>
+                                <folder source="30 Bruma" destination="" priority="0"/>
+                            </files>
+                            <typeDescriptor>
+                                <dependencyType>
+                                    <defaultType name="Optional"/>
+                                    <patterns>
+                                        <pattern>
+                                            <dependencies operator="And">
+                                                <fileDependency file="BSHeartland.esm" state="Missing"/>
+                                            </dependencies>
+                                            <type name="NotUsable"/>
+                                        </pattern>
+                                        <pattern>
+                                            <dependencies operator="And">
+                                                <fileDependency file="BSHeartland.esm" state="Active"/>
+                                            </dependencies>
+                                            <type name="Recommended"/>
+                                        </pattern>
+                                    </patterns>
+                                </dependencyType>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins>
+                </group>
+            </optionalFileGroups>
+        </installStep>
+    </installSteps>
+</config>
