@@ -2,7 +2,7 @@
 <fomod>
     <Name>Vivid Routines - Lightweight Living AI</Name>
     <Author>Karlo</Author>
-    <Version>2.9</Version>
+    <Version>2.12</Version>
     <Website></Website>
     <Description>A modern living-world AI mod: routines for modded followers and idle NPCs, day/night behavior for vampires, werewolves and daedra, citizen wanderlust, jarl flavor, and dynamic visitors for modded venues. One tiny script, zero record edits, zero patches - powered by SPID, SkyPatcher and MCM Helper. Optional modules auto-detect Coldhaven, the Manguz taverns and Beyond Skyrim: Bruma.</Description>
     <Groups>

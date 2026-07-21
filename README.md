@@ -1,4 +1,4 @@
-# Vivid Routines — Lightweight Living AI (v2.9)
+# Vivid Routines — Lightweight Living AI (v2.12)
 
 A modern "living world" AI mod built for YOUR load order. Inspired by what AI
 Overhaul does, built the way 2026 mods should be built: **one tiny script, zero
@@ -9,6 +9,80 @@ by SPID and SkyPatcher, and every feature is toggleable live in an MCM.
 Original work — no assets, records or ini lines were copied from AI Overhaul.
 
 ---
+
+## What's new in v2.12 — NPCs keep their jobs and their scenes
+
+This is the big one. Town routines were being inserted at the TOP of each NPC's
+AI stack, which meant they could outrank vanilla work packages and the staging
+for scripted scenes. That single mistake explains most of the recent reports.
+
+- **Town routines now sit at the BOTTOM of the AI stack** (49 distribution
+  lines moved). Vanilla schedules, job posts and quest/scene packages always
+  win; our routines only fill genuinely idle time. Applies to city outings,
+  town inns, markets, temples, meals, child inn trips and wanderlust.
+- **Vanilla recruitable NPCs keep their own AI.** Uthgerd, Jenassa and every
+  other potential follower were being treated like schedule-less custom
+  followers — that is why Uthgerd wandered off during her opening scene. Top
+  priority is now reserved for mod-added followers (the ones that genuinely
+  stand around doing nothing).
+- **Workers stay at their posts.** Bards, innkeepers, merchants and inn
+  servers are excluded from all social/roaming routines (70 lines), so bards
+  play their sets and shopkeepers stay behind the counter.
+- **Solitude crowd fix.** The execution block sits ~1900 units from the city
+  plaza anchor, inside the old 2000-unit roam — spectators could pile onto the
+  stage. Solitude roams tightened to 1200 (market 900).
+- **Blacklist extended:** Uthgerd and Skulvar Sable-Hilt added.
+- Note: heavy scene crowding can also come from mods that add extra NPCs to
+  ceremonies (e.g. Party of Skyrim). If a specific NPC still misbehaves, add
+  them to the blacklist line — it is the complete off-switch for this mod.
+
+## What's new in v2.11 — The wilds actually move
+
+- **Wilderness roams retuned to vanilla wander values.** Bandit/Forsworn/warlock
+  night scouts, vampire night wandering, werewolf prowls, daedra roams, hunter
+  dawn ranging and wolf packs now use radius 3500-5000 and high energy - the
+  same numbers Skyrim's own "wander the wilds" packages use. Before, they
+  technically ran but idled so much they looked like nothing was happening.
+- **NPCs hurry out of bad weather** (jog in rain/snow, run in storms/blizzards).
+- **Working as designed / please note:**
+  - Bandit farm raids and CW sorties are **OFF by default** - enable them in
+    MCM "Hostile World". Raids run Tirdas & Fredas evenings (20:00-24:00), and
+    like all package AI they only play out in the area around you - Skyrim
+    does not simulate NPCs in unloaded cells.
+  - Vampires sleep in their lairs BY DAY (they are nocturnal here); named
+    unique vampires are deliberately untouched to protect quest vampires.
+    The Coldhaven pilgrimage marks ~30% of vampires per playthrough, not a
+    daily dice roll.
+  - Inn crowding is controlled statistically (cohorts + staggered windows),
+    not by a live head-count - no such check exists in the engine without
+    scripts, so spawning 50 NPCs will not trigger anything.
+  - Civilians mobbing town vampires is vanilla courage - this mod deliberately
+    never touches confidence. Pair with "Run For Your Lives" if you want
+    civilians to flee indoors; it is fully compatible.
+
+## What's new in v2.10 — Hands off the quests
+
+- **Quest-critical blacklist (new).** Every single distribution line now skips
+  NPCs holding the new `VRAI_Excluded` keyword. Out of the box it protects:
+  the Solitude execution ceremony (Roggvir, Ahtar, Captain Aldis, Rorlund),
+  the Markarth intro (Margret, Weylin), the Whiterun Battle-Born doorstep
+  scene (Idolaf, Adrianne), and Illia's Darklight Tower quest. There is no
+  engine condition for "this actor is quest-reserved", and scene staging
+  happens before scene guards can help — a name blacklist is the only fix
+  that actually works.
+- **Add your own:** drop any editorID (or exact NPC name) into the
+  `Keyword = VRAI_Excluded|...` line at the top of `VividRoutines_DISTR.ini`,
+  or ship a one-line ini of your own next to it:
+  `Keyword = VRAI_Excluded|SomeNpcEditorID|NONE|NONE|NONE|NONE|100`
+- **Trade-off note:** blacklisting Adrianne removes her from the Mare Regulars
+  evening vignette. Prefer the vignette? Remove `AdrianneAvenicci` from the
+  blacklist line.
+- **NPCs sleep again in bad weather.** Weather shelters now run 6:00–21:00
+  only; at night NPCs go home and use their beds instead of standing under a
+  roof until sunrise (this was the "some NPCs have no place to sleep" report).
+- Known limitation: NPCs pausing mid-conversation or hesitating at doors can
+  also come from pathing/combat mods — if a specific NPC misbehaves, the
+  blacklist is the universal off-switch for this mod's influence on them.
 
 ## What's new in v2.9 — Creatures are not people
 
